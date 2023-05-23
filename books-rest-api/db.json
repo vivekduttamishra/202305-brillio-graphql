@@ -257,19 +257,6 @@
       "authorId": "dan-brown"
     },
     {
-      "_id": "61bc58e8b521dbf73e6c0c96",
-      "title": "Angels and Demons",
-      "isbn": "11111",
-      "author": "Dan Brown",
-      "price": 100,
-      "description": "",
-      "tags": [],
-      "cover": "",
-      "authorId": "dan-brown",
-      "reviews": [],
-      "__v": 0
-    },
-    {
       "_id": "6245782c2d4aba13215c32f1",
       "title": "Kane and Abel",
       "isbn": "1509808698",
@@ -279,6 +266,24 @@
       "description": "Jeffrey Archer's Kane and Abel was a global phenomenon when it was first released, selling over one million copies in its first week of sale, and it has captivated readers worldwide ever since. They had only one thing in common . . . William Lowell Kane and Abel Rosnovski, one the son of a Boston millionaire, the other a penniless Polish immigrant ? two men born on the same day on opposite sides of the world, their paths destined to cross in the ruthless struggle to build a fortune.Kane and Abel is the marvellous story, spanning sixty years, of two powerful men linked by an all-consuming hatred, brought together by fate to save . . . and finally destroy . . . each other. Jeffrey Archer's international bestseller is followed by the enthralling sequel, The Prodigal Daughter.",
       "tags": [],
       "cover": "https://images-eu.ssl-images-amazon.com/images/I/51Io01xRjsL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
+      "reviews": [],
+      "__v": 0
+    },
+    {
+      "_id": "61bc58e8b521dbf73e6c0c96",
+      "title": "Angels and Demons",
+      "isbn": "11111",
+      "id": "11111",
+      "author": "Dan Brown",
+      "price": 100,
+      "description": "Another fantastic tale by Dan Brown",
+      "tags": [
+        "fiction",
+        "christanity",
+        "pope"
+      ],
+      "cover": "",
+      "authorId": "dan-brown",
       "reviews": [],
       "__v": 0
     }

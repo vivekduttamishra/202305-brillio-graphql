@@ -1,0 +1,34 @@
+{
+  "name": "books-service",
+  "version": "1.0.0",
+  "description": "A GraphQL API for books",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo Hello World, We don't test!",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "build": "echo this command will build the project for depoloyment",
+    "harry-potter": "echo this command will perform magic"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekduttamishra/202305-brillio-graphql.git"
+  },
+  "keywords": [
+    "graphql",
+    "services",
+    "book-management"
+  ],
+  "author": "Vivek Dutta Mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vivekduttamishra/202305-brillio-graphql/issues"
+  },
+  "homepage": "https://github.com/vivekduttamishra/202305-brillio-graphql#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
