@@ -16,7 +16,7 @@ var books = [
 		description: "A poetic tale of Karna of Mahabahrata"
     },
     {
-        id: "a-tale-of-two-cities",
+        id: "a-tale-of-two-cities", 
         title: "A Tale of Two Cities",
         author: "Charles Dickens",
         price: 151,
