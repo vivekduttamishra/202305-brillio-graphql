@@ -5,6 +5,8 @@ var express = require('express'); //no relative path
 //think of express like a factory to create the server app
 var app = express();  
 
+//configure middleware to get json data
+app.use(express.json()); 
 
 //more middlewares
 
@@ -14,7 +16,7 @@ app.get('/stats',(req,res)=>{
     res.json(stats);
 });
 
-
+ 
 app.use((request,response,next)=>{
     
     var url = request.url;
