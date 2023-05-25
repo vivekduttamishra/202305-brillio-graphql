@@ -1,17 +1,22 @@
 
 
-import express from 'express';
 import appRouter from './routes/app-routes.js';
 import bookRouter from './routes/book-routes.js';
 import {useStats} from './middlewares/stats.js';
 
 import {useNotFound} from './middlewares/not-found.js';
 
+import express from 'express';
+import {configureGraphQL} from './graphql-setup.js';
 
 
 //let us create the express app
 //think of express like a factory to create the server app
 var app = express();  
+
+
+//configure graphql
+configureGraphQL(app);
 
 //configure middlewares
 

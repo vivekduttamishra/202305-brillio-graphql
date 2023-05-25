@@ -4,7 +4,6 @@
   "description": "A GraphQL API for books",
   "main": "index.js",
   "type": "module",
- 
   "scripts": {
     "test": "echo Hello World, We don't test!",
     "dev": "nodemon index.js",
@@ -28,7 +27,9 @@
   },
   "homepage": "https://github.com/vivekduttamishra/202305-brillio-graphql#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
