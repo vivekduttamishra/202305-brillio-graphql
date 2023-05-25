@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "description": "A GraphQL API for books",
   "main": "index.js",
-  "type": "module",
- 
   "scripts": {
     "test": "echo Hello World, We don't test!",
     "dev": "nodemon index.js",

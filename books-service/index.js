@@ -1,46 +1,34 @@
 
-var express = require('express'); //no relative path
+
+import express from 'express';
+import appRouter from './routes/app-routes.js';
+import bookRouter from './routes/book-routes.js';
+import {useStats} from './middlewares/stats.js';
+
+import {useNotFound} from './middlewares/not-found.js';
+
+
 
 //let us create the express app
 //think of express like a factory to create the server app
 var app = express();  
 
-//configure middleware to get json data
+//configure middlewares
+
+
 app.use(express.json()); 
-
-//more middlewares
-
-var stats={};
-
-app.get('/stats',(req,res)=>{
-    res.json(stats);
-});
-
- 
-app.use((request,response,next)=>{
-    
-    var url = request.url;
-
-    if(stats[url])
-        stats[url]++;
-    else
-        stats[url]=1;
-
-
-    next();
-});
+useStats(app);
+useNotFound(app); 
 
 
 
 
+//configure routes
+app.use(appRouter);
+app.use("/api/books", bookRouter);
 
 
-//configure your routes
-var configureAppRoutes=require('./app-routes');
-configureAppRoutes(app);
 
-var configureBookRoutes=require('./book-routes');
-configureBookRoutes(app);
 
 
 //now we will let the app listen to a port

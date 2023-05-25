@@ -48,6 +48,4 @@ var books = [
 //ES2015
 //export default books;
 
-//module.exports=books; 
-
-export default books;
+module.exports=books; 
