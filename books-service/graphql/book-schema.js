@@ -9,8 +9,18 @@ import {
 } from 'graphql';
 
 import books from '../data/books.js';
+import authors from '../data/authors.js';
 
 //define a new type called Book
+
+const Author = new GraphQLObjectType({
+    name:"Author",
+    fields:()=>({
+        id:{type:GraphQLString},
+        name:{type:GraphQLString},
+        biography:{type:GraphQLString},
+    })
+});
 
 const Book = new GraphQLObjectType({
     name:"Book",
@@ -20,7 +30,17 @@ const Book = new GraphQLObjectType({
         id: {type: GraphQLString},
         title:{type: GraphQLString},
         price:{type:GraphQLInt},
-        author: {type: GraphQLString},
+        author: {
+            type: Author,
+            //tell how to find the author
+            resolve(parent){
+
+                return authors.find(a=>a.id===parent.authorId);
+
+                
+            }
+        },
+
         rating: {type: GraphQLFloat},
         description: {type: GraphQLString},
     })
