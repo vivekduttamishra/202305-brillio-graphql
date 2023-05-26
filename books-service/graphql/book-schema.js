@@ -5,7 +5,8 @@ import {
     GraphQLInt, 
     GraphQLFloat,
     GraphQLSchema,
-    GraphQLList
+    GraphQLList,
+    GraphQLBoolean
 } from 'graphql';
 
 import books from '../data/books.js';
@@ -19,6 +20,12 @@ const Author = new GraphQLObjectType({
         id:{type:GraphQLString},
         name:{type:GraphQLString},
         biography:{type:GraphQLString},
+        books:{
+            type: new GraphQLList(Book),
+            resolve(parent){
+                return books.filter(b=>b.authorId===parent.id);
+            }
+        }
     })
 });
 
@@ -74,12 +81,79 @@ const rootQuery = new GraphQLObjectType({
             resolve(){
                 return books[0]; //recommended book
             }
+        },
+
+        authors:{
+            type: new GraphQLList(Author),
+            resolve(){
+                return authors;
+            }
+        },
+        author:{
+            type: Author,
+            args:{
+                id:{type:GraphQLString}
+            },
+            resolve(_, {id}){
+                return authors.find(a=>a.id===id);
+            }
         }
     }
 
 })
 
+const Result = new GraphQLObjectType({
+    name:"Result",
+    fields:()=>({
+        success:{type:GraphQLBoolean}
+    })
+});
+
+const mutation = new GraphQLObjectType({
+    name:"Mutation",
+    fields:()=>({
+        addAuthor:{
+            type: Author,
+            args:{
+                id:{type:GraphQLString},
+                name:{type:GraphQLString},
+                biography:{type:GraphQLString}
+            },
+            resolve(_, {id,name,biography}){
+                var author={id,name,biography};
+                authors.push(author);
+                return author;
+            }
+        },
+        deleteBook:{
+            type: Result,
+            args:{
+                id: {type:GraphQLString}
+            },
+            resolve(_,{id}){
+                console.log('id',id);
+                var index=-1;
+                books.forEach((b,i)=>{
+                    if(b.id===id)
+                        index=i;
+                })
+                console.log('index',index);
+                
+                if(index<0)
+                    return {success:false};
+                else{
+                    books.splice(index,1);
+                    return {success:true};
+                }
+                    
+            }
+        }
+    })
+});
+
+
 export const schema = new GraphQLSchema({
-    query:rootQuery
+    query:rootQuery,
+    mutation:mutation
 });
 
