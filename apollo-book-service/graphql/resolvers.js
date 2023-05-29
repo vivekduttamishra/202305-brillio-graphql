@@ -1,12 +1,23 @@
+import {getAllAuthors} from '../services/author-service.js';
 
 
 const resolvers={
 
     Query:{
-        books: ()=>{  return [];   },
+        
+        books: ()=> {             
+            return [];
+        },
+
+
         book: (_, args)=>{  return {id:args.id}    },
+        
         recommendedBooks: ()=>{  return null;      },
-        authors: ()=>{ return []  },
+
+        authors: ()=>{ 
+            getAllAuthors();    
+            return []  
+        },
         author(_, args){ return {id:args.id};  }
 
     },

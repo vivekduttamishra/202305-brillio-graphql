@@ -13,7 +13,7 @@ var server = new ApolloServer({
 });
 
 var {url} = await startStandaloneServer(server,{
-    listen:5000
+    listen:4000
 });
 
 console.log(`server started : ${url}`);
