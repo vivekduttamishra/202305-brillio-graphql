@@ -1,9 +1,9 @@
 
 import axios from 'axios';
 
-const baseRESTUrl= 'http://localhost:5000/authors';
+const baseRESTUrl= 'http://localhost:5000/books';
 
-export function getAllAuthors(){
+export function getAllBooks(){
 
     return axios
             .get(baseRESTUrl)
@@ -13,13 +13,9 @@ export function getAllAuthors(){
 
 }
 
-export async function getAuthorById(id){
-
+export async function getBookById(id){
     var url = `${baseRESTUrl}/${id}`;
-
     var response = await axios.get(url);
-
-    console.log('response.status',response.status);
 
     return response.data; //this is a promised return
     

@@ -1,24 +1,47 @@
-import {getAllAuthors} from '../services/author-service.js';
+import {getAllAuthors, getAuthorById} from '../services/author-service.js';
+import {getAllBooks,getBookById} from '../services/book-service.js';
 
 
 const resolvers={
 
     Query:{
         
-        books: ()=> {             
-            return [];
+        authors: ()=>{ 
+            
+           return  getAllAuthors();    
+            
         },
+        
+        author(_, args){ 
+
+            return getAuthorById(args.id)
+                    .then( author => author)
+                    .catch(error=>{
+                        return  {
+                            message: "No Found",
+                            id: args.id
+                        }
+                    });
+
+         },
+
+        books: async ()=> {             
+            return await getAllBooks();
+        },
+
+
+
+
+
+
+
+        
 
 
         book: (_, args)=>{  return {id:args.id}    },
         
         recommendedBooks: ()=>{  return null;      },
 
-        authors: ()=>{ 
-            getAllAuthors();    
-            return []  
-        },
-        author(_, args){ return {id:args.id};  }
 
     },
 

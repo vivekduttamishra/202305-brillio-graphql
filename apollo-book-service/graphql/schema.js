@@ -11,6 +11,14 @@ type Author{
     books:[Book]
 },
 
+type NotFoundMessage{
+    message:String!,
+    id: String!
+   
+}
+
+union AuthorByIdReturn = Author | NotFoundMessage 
+
 type Book{
     id: String!,
     title:String!,
@@ -27,7 +35,7 @@ type Query{
     book(id:String):Book,
     recommendedBooks: Book,
     authors: [Author],
-    author(id:String):Author
+    author(id:String): AuthorByIdReturn
 }
 
 type Mutation{
