@@ -30,7 +30,7 @@ type Book{
     id: String!,
     title:String!,
     description:String!,
-    cover:String!,
+    coverPhto:String!,
     author:Author!,
     rating:Float!,
     tags:[String],
