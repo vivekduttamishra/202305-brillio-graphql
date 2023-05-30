@@ -21,3 +21,8 @@ export async function getBookById(id){
     
 }
 
+export async function getBooksByAuthor(authorId){
+    var url=`${baseRESTUrl}?authorId=${authorId}`;
+    var response = await axios.get(url);
+    return response.data;
+}

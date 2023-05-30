@@ -2,14 +2,20 @@
 
 const schema=`#graphql
 
+
+
+
+
 type Author{
     id: String!,
     name:String!,
     biography:String!,
     photo:String,
     tags:[String],
-    books:[Book]
+    books:[Book],
+    booksCount:Int!
 },
+
 
 type NotFoundMessage{
     message:String!,
@@ -18,6 +24,7 @@ type NotFoundMessage{
 }
 
 union AuthorByIdReturn = Author | NotFoundMessage 
+
 
 type Book{
     id: String!,
@@ -30,12 +37,32 @@ type Book{
     price:Int!
 }
 
+input BookSearchFilter{
+
+    title:String,
+
+    author: String,
+
+    tags: String,
+
+    minRating: Float
+
+}
+
+
+
 type Query{
-    books: [Book],
+
+    author(id:String): AuthorByIdReturn,
+
+
+    books(filter:BookSearchFilter): [Book],
     book(id:String):Book,
     recommendedBooks: Book,
     authors: [Author],
-    author(id:String): AuthorByIdReturn
+
+
+    
 }
 
 type Mutation{
